@@ -16,4 +16,11 @@ public class LegalEntity extends Client {
     public void setInn(int inn) {
         this.inn = inn;
     }
+
+    @Override
+    public String toString() {
+        return "LegalEntity{" +
+                "inn=" + inn +
+                '}';
+    }
 }

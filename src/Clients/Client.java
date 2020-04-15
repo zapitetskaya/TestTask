@@ -14,4 +14,11 @@ public abstract class Client {
     public Client(String address){
         this.address = address;
     }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "address='" + address + '\'' +
+                '}';
+    }
 }

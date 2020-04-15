@@ -14,11 +14,26 @@ public class Stage {
     private static final double tax = 20;
 
 
+
     public Stage(String name, ArrayList<Work> invoice) {
         this.name = name;
         this.invoice = invoice;
         actWorkComplete = invoice;
         status = Status.New;
+    }
+
+    private void checkWorks(){
+        int count = 0;
+        for (int i=0; i< invoice.size(); i++){
+            if (invoice.get(i).getStatus().equals(Status.Finish)) {
+                count++;
+            }
+
+        }
+        if (count == invoice.size()) {
+            this.status = Status.Finish;
+        }
+
     }
 
     public double getCostForIndiv() {
@@ -95,5 +110,15 @@ public class Stage {
         this.actWorkComplete = actWorkComplete;
     }
 
-
+    @Override
+    public String toString() {
+        return "Stage{" +
+                "name='" + name + '\'' +
+                ", status='" + status + '\'' +
+                ", timeDate=" + timeDate +
+                ", cost=" + cost +
+                ", invoice=" + invoice +
+                ", actWorkComplete=" + actWorkComplete +
+                '}';
+    }
 }

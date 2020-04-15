@@ -65,15 +65,11 @@ public class Contract {
     public double getTotalAmount() {
         if (client.getClass() == LegalEntity.class) {
             for (int i = 0; i < stages.size(); i++){
-                if (stages.get(i).getStatus().equals(Status.Finish)) {
-                    totalAmount += stages.get(i).getCostForLegal();
-                }
+                totalAmount += stages.get(i).getCostForLegal();
             }
         }else {
             for (int i = 0; i < stages.size(); i++) {
-                if (stages.get(i).getStatus().equals(Status.Finish)) {
-                    totalAmount += stages.get(i).getCostForIndiv();
-                }
+                totalAmount += stages.get(i).getCostForIndiv();
             }
         }
         return totalAmount;
@@ -103,5 +99,17 @@ public class Contract {
 
     public void setStages(ArrayList<Stage> stages) {
         this.stages = stages;
+    }
+
+    @Override
+    public String toString() {
+        return "Contract{" +
+                "client=" + client +
+                ", status='" + status + '\'' +
+                ", date=" + date +
+                ", totalAmount=" + totalAmount +
+                ", tax=" + tax +
+                ", stages=" + stages +
+                '}';
     }
 }
