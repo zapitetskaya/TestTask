@@ -1,0 +1,17 @@
+package Clients;
+
+public abstract class Client {
+    private String address;
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Client(String address){
+        this.address = address;
+    }
+}
