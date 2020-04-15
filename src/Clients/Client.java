@@ -11,7 +11,7 @@ public abstract class Client {
         this.address = address;
     }
 
-    public Client(String address){
+    public Client(String address) {
         this.address = address;
     }
 

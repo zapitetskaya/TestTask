@@ -1,6 +1,6 @@
 package Clients;
 
-public class Individual extends Client  {
+public class Individual extends Client {
 
     private String name;
     private String number;

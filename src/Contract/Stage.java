@@ -14,7 +14,6 @@ public class Stage {
     private static final double tax = 20;
 
 
-
     public Stage(String name, ArrayList<Work> invoice) {
         this.name = name;
         this.invoice = invoice;
@@ -22,9 +21,9 @@ public class Stage {
         status = Status.New;
     }
 
-    private void checkWorks(){
+    private void checkWorks() {
         int count = 0;
-        for (int i=0; i< invoice.size(); i++){
+        for (int i = 0; i < invoice.size(); i++) {
             if (invoice.get(i).getStatus().equals(Status.Finish)) {
                 count++;
             }
@@ -37,7 +36,7 @@ public class Stage {
     }
 
     public double getCostForIndiv() {
-        for (int i =0; i< actWorkComplete.size();i++) {
+        for (int i = 0; i < actWorkComplete.size(); i++) {
             if (actWorkComplete.get(i).getStatus().equals(Status.Finish)) {
                 cost += actWorkComplete.get(i).getCost();
             }
@@ -46,7 +45,7 @@ public class Stage {
     }
 
     public double getCostForLegal() {
-        for (int i =0; i< actWorkComplete.size();i++) {
+        for (int i = 0; i < actWorkComplete.size(); i++) {
             if (actWorkComplete.get(i).getStatus().equals(Status.Finish)) {
                 cost += (1 + tax / 100) * actWorkComplete.get(i).getCost();
             }
@@ -58,15 +57,17 @@ public class Stage {
         invoice.add(work);
         actWorkComplete.add(work);
     }
+
     public void remove(Work work) {
         invoice.remove(work);
         actWorkComplete.add(work);
     }
+
     public void update(Work work, String status) {
-        for (int i =0; i < invoice.size(); i++ ) {
+        for (int i = 0; i < invoice.size(); i++) {
             if (invoice.get(i) == work) {
                 invoice.get(i).setStatus(status);
-            }else actWorkComplete.get(i).setStatus(status);
+            } else actWorkComplete.get(i).setStatus(status);
         }
     }
 

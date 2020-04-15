@@ -15,26 +15,28 @@ public class Contract {
     private double tax;
     private ArrayList<Stage> stages;
 
-    public Contract(Client client, ArrayList<Stage> stages){
+    public Contract(Client client, ArrayList<Stage> stages) {
         this.client = client;
         status = Status.New;
         date = LocalDate.now();
-        totalAmount =0;
-        tax =0;
+        totalAmount = 0;
+        tax = 0;
         this.stages = stages;
     }
 
     public void add(Stage stage) {
         stages.add(stage);
     }
+
     public void remove(Stage stage) {
         stages.remove(stage);
     }
+
     public void update(Stage stage, String status) {
-        for (int i =0; i < stages.size(); i++ ) {
-           if (stages.get(i) == stage) {
-            stages.get(i).setStatus(status);
-           }
+        for (int i = 0; i < stages.size(); i++) {
+            if (stages.get(i) == stage) {
+                stages.get(i).setStatus(status);
+            }
         }
     }
 
@@ -64,10 +66,10 @@ public class Contract {
 
     public double getTotalAmount() {
         if (client.getClass() == LegalEntity.class) {
-            for (int i = 0; i < stages.size(); i++){
+            for (int i = 0; i < stages.size(); i++) {
                 totalAmount += stages.get(i).getCostForLegal();
             }
-        }else {
+        } else {
             for (int i = 0; i < stages.size(); i++) {
                 totalAmount += stages.get(i).getCostForIndiv();
             }
@@ -81,8 +83,8 @@ public class Contract {
 
     public double getTax() {
         if (client.getClass() == LegalEntity.class) {
-            tax = totalAmount /6;
-        }else {
+            tax = totalAmount / 6;
+        } else {
             tax = 0;
         }
         return tax;

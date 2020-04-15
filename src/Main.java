@@ -32,11 +32,11 @@ public class Main {
         stages1.add(stage1);
         stages1.add(stage);
 
-        Individual individual = new Individual ("Saratov","Alina","9277097024");
-        LegalEntity legalEntity = new LegalEntity("Moscow",945677738);
+        Individual individual = new Individual("Saratov", "Alina", "9277097024");
+        LegalEntity legalEntity = new LegalEntity("Moscow", 945677738);
 
-        Contract contract = new Contract(individual,stages);
-        Contract contract1 = new Contract(legalEntity,stages1);
+        Contract contract = new Contract(individual, stages);
+        Contract contract1 = new Contract(legalEntity, stages1);
         System.out.println(contract.getTotalAmount());
         System.out.println(contract1.getTotalAmount());
 
