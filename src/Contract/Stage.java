@@ -9,33 +9,34 @@ public class Stage {
     private String status;
     private LocalDate timeDate;
     private double cost;
-    private ArrayList<Work> invoice;
-    private ArrayList<Work> actWorkComplete;
-    private static final double tax = 20;
+    private ArrayList<Work> invoice; //Счет-фактура
+    private ArrayList<Work> actWorkComplete; //Акт выполненных работа
+    private static final double tax = 20; //неизменяемая переменная налог
 
 
     public Stage(String name, ArrayList<Work> invoice) {
         this.name = name;
         this.invoice = invoice;
-        actWorkComplete = invoice;
+        actWorkComplete = invoice; //присваиваем так как сумма по счет-факт. и акту одинаковая
         status = Status.New;
     }
 
     private void checkWorks() {
+        //считаем количество законченных работ
+        // если закончены все - статус всего этапа "закончен"
         int count = 0;
         for (int i = 0; i < invoice.size(); i++) {
             if (invoice.get(i).getStatus().equals(Status.Finish)) {
                 count++;
             }
-
         }
         if (count == invoice.size()) {
             this.status = Status.Finish;
         }
-
     }
 
     public double getCostForIndiv() {
+        //суммируем цены только законченных работ для физ. лица
         for (int i = 0; i < actWorkComplete.size(); i++) {
             if (actWorkComplete.get(i).getStatus().equals(Status.Finish)) {
                 cost += actWorkComplete.get(i).getCost();
@@ -45,6 +46,7 @@ public class Stage {
     }
 
     public double getCostForLegal() {
+        //суммируем цены только законченных работ для юр. лица
         for (int i = 0; i < actWorkComplete.size(); i++) {
             if (actWorkComplete.get(i).getStatus().equals(Status.Finish)) {
                 cost += (1 + tax / 100) * actWorkComplete.get(i).getCost();
@@ -67,7 +69,8 @@ public class Stage {
         for (int i = 0; i < invoice.size(); i++) {
             if (invoice.get(i) == work) {
                 invoice.get(i).setStatus(status);
-            } else actWorkComplete.get(i).setStatus(status);
+                actWorkComplete.get(i).setStatus(status);
+            }
         }
     }
 

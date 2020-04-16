@@ -39,6 +39,7 @@ public class Main {
         Contract contract1 = new Contract(legalEntity, stages1);
         System.out.println(contract.getTotalAmount());
         System.out.println(contract1.getTotalAmount());
+        System.out.println(contract1.getTax());
 
     }
 }

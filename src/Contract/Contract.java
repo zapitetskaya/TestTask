@@ -83,7 +83,7 @@ public class Contract {
 
     public double getTax() {
         if (client.getClass() == LegalEntity.class) {
-            tax = totalAmount / 6;
+            tax = totalAmount / 6; //налог = 20% от 120% в общей стоимости (x*20/120 = x/6)
         } else {
             tax = 0;
         }
@@ -91,7 +91,6 @@ public class Contract {
     }
 
     public void setTax(double tax) {
-
         this.tax = tax;
     }
 
